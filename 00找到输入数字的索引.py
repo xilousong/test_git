@@ -15,6 +15,10 @@ while True:
     mid = (start+end)//2
     #中间值
     mid_num = arr[mid]
+    # 如果找不到，就判断应该在列表的哪个数字(索引)之后
+    if mid == start:
+        print("can't find ,should after %s==>%s" %(start,arr[start]))
+        break
     #如果输入的数字比中间的数字大，则在数组右边
     if num_to_find > mid_num:
         start = mid
