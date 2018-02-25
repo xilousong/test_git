@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+class Cat():
+    #属性
+    
+    #方法
+    def eat(self):
+        print("猫在吃鱼.....")
+    
+    def drink(self):
+        print("猫正在喝水......")
+
+
