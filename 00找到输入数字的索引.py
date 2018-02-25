@@ -2,14 +2,25 @@
 # -*- coding: utf-8 -*-
 
 arr = [1,3,7,10,22,100,299,1000,2000,30000,40000]
-print("""请从下面的列表%s中随机输入一个数字,将会
- 输出该数字在列表中的索引"""%(arr))
-try:
-    num = input("请从给定的列表中输入一个数字：")
 
-    for index in range(len(arr)):
-        if arr[index] == int(num):
-            print(index)
-except:
-    exit
+#列表起始位置
+start = 0
+#列表结束位置
+end = len(arr)-1
+#要找的数字
+num_to_find = int(input("请输入你要查找的数字："))
 
+while True:
+    #中间位置索引
+    mid = (start+end)//2
+    #中间值
+    mid_num = arr[mid]
+    #如果输入的数字比中间的数字大，则在数组右边
+    if num_to_find > mid_num:
+        start = mid
+    #如果输入的数字比中间的数字小，则在数组左边
+    elif num_to_find < mid_num:
+        end = mid
+    else:
+        print("find",mid)
+        break
