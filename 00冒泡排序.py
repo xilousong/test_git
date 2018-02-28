@@ -11,6 +11,7 @@ while arr_lenth:
     #采用range函数生成一个序列，比列表实际元素少一位数字，因为如果
     #刚好实用序列的个数，当下面比较时“arr[i+1]”会超出列表范围
     for i in range(arr_lenth-1):
+        count +=1
         if arr[i] > arr[i+1]:
             arr[i],arr[i+1] = arr[i+1],arr[i]
         #打印每次冒泡排序后的结果
@@ -19,3 +20,4 @@ while arr_lenth:
     arr_lenth-=1        
 #打印冒泡完成后的列表
 print(arr)
+print(count)
