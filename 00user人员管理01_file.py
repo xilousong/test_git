@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # encoding: utf-8
 
+path='users.data.txt'
+
 users={}
 
 text= """ ----用户管理系统 V-1.0.0----
@@ -34,6 +36,10 @@ while True:
             users[uid]=per
             print('用户添加成功！！！')
             print(users)
+            fhandler = open('users.data.txt','wt')
+            for k,v in users.items():
+                fhandler.write('{0},{1},{2},{3}\n'.format(k,v['name'],v['age'],v['tel']))
+            fhandler.close()
 
     if INPUT == "del":
         input_txt=int(input("请输入要删除的用户ID："))
@@ -45,6 +51,11 @@ while True:
             if panduan == 'yes':
                 print('删除成功，您删除的用户是{0}'.format(users[input_txt]['name']))
                 del users[input_txt]
+                fhandler = open('users.data.txt','wt')
+                for k,v in users.items():
+                    fhandler.write('{0},{1},{2},{3}\n'.format(k,v['name'],v['age'],v['tel']))
+                fhandler.close()
+
 
     if INPUT == "update":
         input_txt=int(input("请输入要修改的用户ID："))
@@ -62,8 +73,22 @@ while True:
                 users[input_txt]['name']=new_user.split(':')[0]
                 users[input_txt]['age']=int(new_user.split(':')[1])
                 users[input_txt]['tel']=new_user.split(':')[2]
+                fhandler = open('users.data.txt','wt')
+                for k,v in users.items():
+                    fhandler.write('{0},{1},{2},{3}\n'.format(k,v['name'],v['age'],v['tel']))
+                fhandler.close()
+
 
     if INPUT == "find":
+        fhandler = open('users.data.txt','rt')
+        for line in fhandler.readlines():
+            nodes = line.strip().split(',')
+            ID=int(nodes[0])
+            name=nodes[1]
+            age=int(nodes[2])
+            tel=nodes[3]
+            users[int(ID)]={'name':name,'age':age,'tel':tel}
+        fhandler.close()
         input_txt=input("请输入要查找的用户名：")
         for i in users.items():
             if input_txt == i[1]['name']:
@@ -76,10 +101,19 @@ while True:
         #    users[input_txt]['tel']))
 
     if INPUT == "list":
-        print("|{0:^5}|{1:^10s}|{2:^5s}|{3:^15s}|".format("ID","姓名","年龄","联系方式"))
+        fhandler = open('users.data.txt','rt')
+        for line in fhandler.readlines():
+            nodes = line.strip().split(',')
+            ID=int(nodes[0])
+            name=nodes[1]
+            age=int(nodes[2])
+            tel=nodes[3]
+            users[int(ID)]={'name':name,'age':age,'tel':tel}
+        fhandler.close()
+        print("|{0:^5s}|{1:^10s}|{2:^5s}|{3:^15s}|".format("ID","姓名","年龄","联系方式"))
         print('-'*50)
         for k,v in users.items():
-            print("|{0:^5}|{1:^10s}|{2:^5d}|{3:^15s}|".format(k,v['name'],v['age'],v['tel']))
+            print("|{0:^5d}|{1:^10s}|{2:^5d}|{3:^15s}|".format(k,v['name'],v['age'],v['tel']))
 
     if INPUT == "exit" or INPUT == "q":
         print('谢谢使用！！！')
