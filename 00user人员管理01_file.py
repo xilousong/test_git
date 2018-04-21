@@ -83,11 +83,11 @@ while True:
         fhandler = open('users.data.txt','rt')
         for line in fhandler.readlines():
             nodes = line.strip().split(',')
-            ID=int(nodes[0])
-            name=nodes[1]
-            age=int(nodes[2])
-            tel=nodes[3]
-            users[int(ID)]={'name':name,'age':age,'tel':tel}
+             # ID=int(nodes[0])
+           # name=nodes[1]
+           # age=int(nodes[2])
+           # tel=nodes[3]
+            users[int(nodes[0])]={'name':nodes[1],'age':int(nodes[2]),'tel':nodes[3]}
         fhandler.close()
         input_txt=input("请输入要查找的用户名：")
         for i in users.items():
@@ -104,11 +104,11 @@ while True:
         fhandler = open('users.data.txt','rt')
         for line in fhandler.readlines():
             nodes = line.strip().split(',')
-            ID=int(nodes[0])
-            name=nodes[1]
-            age=int(nodes[2])
-            tel=nodes[3]
-            users[int(ID)]={'name':name,'age':age,'tel':tel}
+           # ID=int(nodes[0])
+           # name=nodes[1]
+           # age=int(nodes[2])
+           # tel=nodes[3]
+            users[int(nodes[0])]={'name':nodes[1],'age':int(nodes[2]),'tel':nodes[3]}
         fhandler.close()
         print("|{0:^5s}|{1:^10s}|{2:^5s}|{3:^15s}|".format("ID","姓名","年龄","联系方式"))
         print('-'*50)
