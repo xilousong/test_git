@@ -199,8 +199,8 @@ def List():
 def quit():
     print('谢谢使用！！！')
 
-if __name__ == "__main__":
 
+def main():
     login_auth()
     while login:
         INPUT=input('请输入要执行的操作：')
@@ -219,3 +219,6 @@ if __name__ == "__main__":
         if INPUT == "exit" or INPUT == "q":
             quit()
             break
+
+if __name__ == "__main__":
+    main()
